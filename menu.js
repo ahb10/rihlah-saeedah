@@ -51,12 +51,13 @@
 
   var root=document.documentElement,lastFocus=null;
   function open(){
-    var r=btn.getBoundingClientRect();
-    m.style.setProperty('--cx',(r.left+r.width/2)+'px');m.style.setProperty('--cy',(r.top+r.height/2)+'px');
-    m.style.setProperty('--top',Math.max(90,hdr.getBoundingClientRect().bottom+18)+'px');
     lastFocus=document.activeElement;
     m.scrollTop=0;root.classList.remove('mm-scrolled');
-    root.classList.add('menu-open');btn.setAttribute('aria-expanded','true');btn.setAttribute('aria-label',T.close);
+    root.classList.add('menu-open');
+    /* measure after the header is pinned to the top of the screen */
+    var r=btn.getBoundingClientRect();
+    m.style.setProperty('--cx',(r.left+r.width/2)+'px');m.style.setProperty('--cy',(r.top+r.height/2)+'px');
+    m.style.setProperty('--top',(hdr.getBoundingClientRect().bottom+18)+'px');btn.setAttribute('aria-expanded','true');btn.setAttribute('aria-label',T.close);
     setTimeout(function(){var f=m.querySelector('a');if(f)f.focus({preventScroll:true});},350);
   }
   function close(){
