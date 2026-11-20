@@ -1,0 +1,65 @@
+/* Urdu (RTL) layer, loaded only by ur/*.html after styles.css and anim.css */
+:root{--ur:"Noto Nastaliq Urdu","Noto Naskh Arabic",serif;--display:var(--ur),"Plus Jakarta Sans",system-ui,sans-serif;--body:var(--ur),"Inter",system-ui,sans-serif}
+html[dir=rtl] body{font-size:16px;line-height:2.1}
+[dir=rtl] *{letter-spacing:0!important}
+[dir=rtl] h1,[dir=rtl] h2,[dir=rtl] h3{line-height:1.75;font-weight:700}
+[dir=rtl] .eyebrow{font-size:13px;line-height:1.9;text-transform:none}
+[dir=rtl] .btn{line-height:1.9;padding:9px 22px 11px}
+[dir=rtl] .hdr-actions .btn{padding:6px 16px 8px}
+[dir=rtl] .lang{font-family:"Inter",system-ui,sans-serif;direction:ltr}
+[dir=rtl] .brand b{font-size:21px;line-height:1.7}
+[dir=rtl] .brand span{font-size:11px;line-height:1.6}
+[dir=rtl] header.top .in{padding-block:6px}
+[dir=rtl] .hero h1{font-size:clamp(30px,4.3vw,50px)}
+[dir=rtl] .phero h1{font-size:clamp(28px,3.8vw,44px)}
+[dir=rtl] .head h2{font-size:clamp(25px,3vw,34px)}
+[dir=rtl] .final h2{font-size:clamp(25px,3.2vw,36px)}
+[dir=rtl] .hero p.lead,[dir=rtl] .phero .lead{font-size:18px;line-height:2.1}
+[dir=rtl] .trust b{font-size:18px;line-height:1.8}
+[dir=rtl] summary{font-size:17px;line-height:1.9}
+[dir=rtl] .concept{font-size:12px;line-height:2}
+/* Latin figures stay in a Latin face so prices read crisply */
+[dir=rtl] .tier .price b,[dir=rtl] .itin-price b,[dir=rtl] .from strong,[dir=rtl] .facts b,[dir=rtl] table.prices td b,[dir=rtl] .mm-pk a small{font-family:"Plus Jakarta Sans",system-ui,sans-serif}
+[dir=rtl] table.prices td{font-family:"Inter",var(--ur)}
+[dir=rtl] input[type=tel]{direction:ltr;text-align:right}
+[dir=rtl] input,[dir=rtl] select,[dir=rtl] textarea{font-family:var(--body);line-height:1.8}
+
+/* mirror direction-specific rules */
+[dir=rtl] .tier.feat::after{left:auto;right:28px}
+[dir=rtl] .float-wa{right:auto;left:max(18px,env(safe-area-inset-left))}
+[dir=rtl] .chips span{margin-right:0;margin-left:4px}
+[dir=rtl] .chips a small{margin-left:0;margin-right:6px}
+[dir=rtl] .itin-price{text-align:left}
+[dir=rtl] .timeline{border-left:0;border-right:2px solid var(--line);margin-left:0;margin-right:6px}
+[dir=rtl] .timeline li{padding:0 22px 18px 0}
+[dir=rtl] .timeline li::before{left:auto;right:-7px}
+[dir=rtl] table.prices caption,[dir=rtl] table.prices th,[dir=rtl] table.prices td{text-align:right}
+[dir=rtl] .lists ul,[dir=rtl] .ticks{padding-left:0;padding-right:20px}
+[dir=rtl] .head h2::after{left:auto;right:0;transform-origin:100% 50%}
+[dir=rtl] .burger span{left:auto;right:12px}
+[dir=rtl] .mmenu::after{right:auto;left:-200px}
+[dir=rtl] .mm-links a:hover i,[dir=rtl] .mm-links a:focus-visible i{transform:translateX(-6px)}
+[dir=rtl] .mm-links b{font-size:clamp(22px,6vw,30px);line-height:1.7}
+[dir=rtl] .mm-links small{font-family:"Inter",sans-serif}
+@media (max-width:560px){[dir=rtl] .itin-price{text-align:right}}
+
+/* motion tweaks: Nastaliq is tall, so words fade up instead of sliding out of a mask */
+[dir=rtl] h1.wsplit .w{overflow:visible;padding:0;margin:0}
+[dir=rtl] h1.wsplit .w>span{animation-name:ur-word}
+@keyframes ur-word{from{opacity:0;transform:translateY(.35em)}}
+[dir=rtl].anim .timeline{border-right-color:transparent}
+[dir=rtl].anim .timeline::before{left:auto;right:-2px}
+[dir=rtl].anim .step{background-position:100% 0,100% 0}
+@media (prefers-reduced-motion:no-preference){
+  [dir=rtl] nav.main a::after{transform-origin:left}
+  [dir=rtl] nav.main a:hover::after{transform-origin:right}
+}
+[dir=rtl] .tier.feat::after{content:"سب سے زیادہ منتخب";font-family:var(--body);line-height:1.6;padding:4px 12px 6px}
+[dir=rtl] .step::before{content:"مرحلہ " counter(s);font-family:var(--body)}
+/* slide-ins come from the right in RTL, so nothing hangs off the scrollable left edge */
+[dir=rtl] body{overflow-x:clip}
+[dir=rtl].anim .rv-l{translate:34px 0}
+[dir=rtl].anim .rv-l.is-in{animation-name:reveal-r}
+[dir=rtl].anim .timeline li{translate:12px 0}
+[dir=rtl].anim .timeline.is-in li{animation-name:reveal-r}
+@keyframes reveal-r{from{opacity:0;translate:34px 0}to{opacity:1;translate:0 0}}
