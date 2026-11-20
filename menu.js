@@ -55,13 +55,16 @@
     m.style.setProperty('--cx',(r.left+r.width/2)+'px');m.style.setProperty('--cy',(r.top+r.height/2)+'px');
     m.style.setProperty('--top',Math.max(90,hdr.getBoundingClientRect().bottom+18)+'px');
     lastFocus=document.activeElement;
+    m.scrollTop=0;root.classList.remove('mm-scrolled');
     root.classList.add('menu-open');btn.setAttribute('aria-expanded','true');btn.setAttribute('aria-label',T.close);
     setTimeout(function(){var f=m.querySelector('a');if(f)f.focus({preventScroll:true});},350);
   }
   function close(){
-    root.classList.remove('menu-open');btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label',T.open);
+    root.classList.remove('menu-open','mm-scrolled');btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label',T.open);
     if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true});
   }
+  /* frosted header once the menu's own content scrolls under the logo */
+  m.addEventListener('scroll',function(){root.classList.toggle('mm-scrolled',m.scrollTop>4);},{passive:true});
   btn.addEventListener('click',function(){root.classList.contains('menu-open')?close():open();});
   m.addEventListener('click',function(e){if(e.target.closest('a'))close();});
   document.addEventListener('keydown',function(e){
